@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Insert title here</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			//$('.container').resizable();
+
+		//	mycross = Object.create(crosshairs);
+		//	mycross.init({ x: 10, y: 10 });
+
+
+
+
+			mouseGuide = Object.create(crosshairs);
+			mouseGuide.render();
+			mouseGuide.$both.css('background', 'orange').css('outline', 'rgba(0,0,0,0.25) solid 1px');
+			mouseGuide.text('HGuide');
+			$(document).mousemove(function(e){
+				//console.log(e);
+				mouseGuide.update({ x: e.clientX, y: e.clientY });
+				mouseGuide.text('HGuide: (' + e.clientX + ", " + e.clientY + ")");
+			});
+
+
+
+		});
+
+		pxGuide = {
+			init: function(options){
+				this.render();
+				this.update(options);
+			},
+			render: function(){
+				this.$el =
+					$(document.createElement('div'))
+						.addClass('px-guide')
+						.appendTo(
+							$("body")
+						);
+			},
+			update: function(options){
+				if (!this.$el)
+					this.render();
+
+				if (typeof options.x !== "undefined"){
+					this.verticalGuide(options.x);
+				} else if (typeof options.y !== "undefined"){
+					this.horizontalGuide(options.y);
+				}
+			},
+			verticalGuide: function(x){
+				this.$el.css('left', x).removeClass('h-px-guide').addClass('v-px-guide');
+			},
+			horizontalGuide: function(y){
+				this.$el.css('top', y).removeClass('v-px-guide').addClass('h-px-guide');
+			}
+		};
+
+		crosshairs = {
+			init: function(options){
+				this.render();
+				this.update(options);
+			},
+			render: function(){
+				this.hGuide = Object.create(pxGuide);
+				this.vGuide = Object.create(pxGuide);
+				this.hGuide.render();
+				this.vGuide.render();
+				this.$h = this.hGuide.$el;
+				this.$v = this.vGuide.$el;
+				this.$both = $([this.hGuide.$el[0], this.vGuide.$el[0]]);
+			},
+			text: function(text){
+				this.$h.html(text);
+			},
+			update: function(options){
+				if (!this.hGuide || !this.vGuide)
+					this.render();
+
+				if (typeof options.x !== "undefined")
+					this.vGuide.update({ x: options.x });
+
+				if (typeof options.y !== "undefined")
+					this.hGuide.update({ y: options.y });
+			}
+		};
+	</script>
+	<style>
+		* { margin: 0; padding: 0; }
+		.container { position: absolute; top: 40px; bottom: 50px; left: 50px; right: 50px; border: 10px solid #eee; }
+		.container-label { font-family: "Tahoma"; position: absolute; font-size: 14px; text-transform: uppercase; }
+		.trans { background: url('transparency.png') repeat transparent; }
+
+		.box { margin: 20px; padding: 20px; border: 10px solid orange; background: blue; }
+		.inner { background: white; }
+
+		#pxGuides { width: 100%; height: 100%; z-index: 9999999; position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+		.crosshairs { width: 50px; height: 50px; position: absolute; }
+		.crosshair { background: blue; }
+		.vcrosshair { width: 1px; height: 100%; position: absolute; left: 50%; }
+		.hcrosshair { height: 1px; width: 100%; position: absolute; top: 50%; }
+		.crosshair-label { display: none; position: absolute; width: 300px; top: 100%; }
+		.crosshairs:hover .crosshair-label { display: block; }
+
+		.px-guide { background: black; font-size: 11px; }
+		.h-px-guide { height: 1px; width: 100%; position: absolute; top: 50%; }
+		.v-px-guide { width: 1px; height: 100%; position: absolute; left: 50%; }
+
+		.b10 { position: absolute; top: 10px; left: 10px; border: 1px solid black;  }
+	</style>
+	<script type="text/html">
+		<div class="crosshairs">
+			<div class="vcrosshair crosshair"></div>
+			<div class="hcrosshair crosshair"></div>
+		</div>
+	</script>
+</head>
+<body>
+<div class="container trans">
+	<div class="box"><div class="inner">This is some content.</div></div>
+</div>
+<div class="b10">
+	bleh
+</div>
+<div class="px-guide h-px-guide"></div>
+<div class="px-guide v-px-guide"></div>
+</body>
+</html>
