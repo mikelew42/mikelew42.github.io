@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+
+	});
+</script>
+<style>
+* { margin: 0; padding: 0; }
+ .section {  }
+ .column {  }
+ .full { background: green; }
+ .fl { float: left; }
+ .fr { float: right; }
+ .t1 { width: 50%; background: blue; color: white; transition: width .2s; }
+ .t2 { width: 50%; background: red; transition: width .2s; }
+ .grey { background: #444; }
+ .clear { clear: both; }
+ .white { background: rgba(255, 255, 255, .55); color: black;}
+ .blocks { list-style: none; float: right; }
+ ul.blocks li { float: left; background: orange; border: 1px solid black; height: 30px; width: 60px; }
+ 
+ .blocks2 { list-style: none; }
+ .blocks2 li { float: right; background: yellow; border: 1px solid black; height: 30px; width: 50px; color: black; }
+
+ /* @media (max-width: 600px) {
+ 	.t1 { width: 100%; }
+ 	.t2 { width: 100%; }
+ } */
+  
+</style>
+</head>
+<body>
+<h3 style="height: 100px;">To notice:  When 2 adjustable width items (the h1 on the left, and the blocks on the right) collide, sometimes the text breaks, sometimes the inline blocks break, depending on the layout.</h3>
+<!--  ROW 1  -->
+<div class="section grey">
+	<div class="column fl t1">
+		<div>
+			<h1 class="white fl" contenteditable="true">Title Before UL, Title Floated Left</h1>
+			<ul class="blocks">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Here, the H1 is above the UL.  Blocks 1: UL floated right, LIs floated left.
+		</p>
+	</div>
+	<div class="column fr t2">
+		<div>
+			<ul class="blocks">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<h1 class="white" contenteditable="true">UL Before Title, Title Not Floated</h1>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 1:  UL floated right, LIs floated left.
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+<!--  ROW 2  -->
+<div class="section grey">
+	<div class="column fl t1">
+		<div>
+			<h1 class="white fl" contenteditable="true">Title Before UL, Title Floated Left</h1>
+			<ul class="blocks2">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Here, the H1 is above the UL.  Blocks 2: ul not floated, blocks floated right.
+		</p>
+	</div>
+	<div class="column fr t2">
+		<div>
+			<ul class="blocks2">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<h1 class="white" contenteditable="true">UL Before Title, Title Not Floated</h1>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 2: ul not floated, blocks floated right.
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+<!--  ROW 3  -->
+<div class="section grey">
+	<div class="column fl t1">
+		<div>
+			<h1 class="white fl" contenteditable="true">Title Before UL, Title Floated Left</h1>
+			<ul class="blocks">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 1;
+		</p>
+	</div>
+	<div class="column fr t2">
+		<div>
+			<ul class="blocks2">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<h1 class="white" contenteditable="true">UL Before Title, Title Not Floated</h1>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 2: ul not floated, blocks floated right.
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+<!--  PART II  -->
+<div class="section grey">
+	<div class="column full">Would it be possible to have an overlapping region:  The threshold for stacking/breaking overlaps?  Also, how to handle children columns...</div>
+</div>
+<!--  ROW 1  -->
+<div class="section grey">
+	<div class="column fl t1">
+		<div>
+			<div class="column fl t1"><h1 class="white" contenteditable="true">Left Floated Column</h1></div>
+			<div class="column fr t1">
+				<ul class="blocks">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>		
+			</div>
+			<div class="clear">Always clear!!!</div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Here, the H1 is above the UL.  Blocks 1: UL floated right, LIs floated left.
+		</p>
+	</div>
+	<div class="column fr t2">
+		<div>
+			<ul class="blocks">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<h1 class="white" contenteditable="true">UL Before Title, Title Not Floated</h1>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 1:  UL floated right, LIs floated left.
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+<!--  ROW 2  -->
+<div class="section grey">
+	<div class="column fl t1">
+		<div>
+			<h1 class="white fl" contenteditable="true">Title Before UL, Title Floated Left</h1>
+			<ul class="blocks2">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Here, the H1 is above the UL.  Blocks 2: ul not floated, blocks floated right.
+		</p>
+	</div>
+	<div class="column fr t2">
+		<div>
+			<ul class="blocks2">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<h1 class="white" contenteditable="true">UL Before Title, Title Not Floated</h1>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 2: ul not floated, blocks floated right.
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+<!--  ROW 3  -->
+<div class="section grey">
+	<div class="column fl t1">
+		<div>
+			<h1 class="white fl" contenteditable="true">Title Before UL, Title Floated Left</h1>
+			<ul class="blocks">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 1;
+		</p>
+	</div>
+	<div class="column fr t2">
+		<div>
+			<ul class="blocks2">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<h1 class="white" contenteditable="true">UL Before Title, Title Not Floated</h1>
+			<div class="clear"></div>
+		</div>
+		<p>
+			You need columns to mitigate the responsive adjustments.  Blocks 2: ul not floated, blocks floated right.
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+</body>
+</html>

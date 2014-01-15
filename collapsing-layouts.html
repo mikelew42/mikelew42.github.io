@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+
+	});
+</script>
+<style>
+ * { margin: 0; padding: 0; }
+ body { overflow: hidden; }
+ .section {  }
+ .column {  }
+ h1 { background: black; }
+ h2 { background: #aaa; }
+ .full { background: green; }
+ .fl { float: left; }
+ .flc { padding: 10px; height: 100%; border-left: 2px solid blue; border-right: 1px solid white; }
+ .flc.main { border-left: 5px solid blue; }
+ .fr { float: right;  }
+ .frc { padding: 10px; height: 100%; border-right: 2px solid red; border-left: 1px solid white;}
+ .frc.main { border-right: 5px solid red; }
+ .cc { width: 50%; background: #333; color: white; transition: width .2s; }
+ .ncc { width: 100%; background: #666; color: black; transition: width .2s; }
+ .grey { background: #444; }
+ .clear { clear: both; }
+ .white { background: rgba(255, 255, 255, .55); color: black;}
+
+ .block1 { float: left; background: #ff6600; height: 30px; width: 50px; border: 1px solid white; }
+
+ @media (max-width: 600px) {
+ 	.cc { width: 100%; }
+ 	.ncc { width: 50%; }
+ 	@media (max-width: 400px) {
+ 		.ncc { width: 100%; }
+ 	}
+ }
+ @media (min-width: 1000px){
+ 	.ncc { width: 50%; }
+ }
+</style>
+</head>
+<body>
+<h1 style="height: 50px; font-size: 14px; color: #fff;">Note:  There are 3 breakpoints (4 layouts) here.</h1>
+<div class="section">
+	<div class="fl cc">
+		<div class="flc main">
+			<h1>Floated Left</h1>
+			<div class="fl ncc">
+				<div class="flc">
+					<h2>1 Floated Left</h2>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="fr ncc">
+				<div class="frc">
+					<h2>2 Floated Right</h2>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="fl ncc">
+				<div class="flc">
+					<h2>3 Floated Left</h2>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="fr ncc">
+				<div class="frc">
+					<h2>4 Floated Right</h2>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="fr cc">
+		<div class="frc main">
+			<h1>Floated Right</h1>
+			<div class="fl ncc">
+				<div class="flc">
+					<h2>Floated Left</h2>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="fr ncc">
+				<div class="frc">
+					<h2>Floated Right</h2>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="block1"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
